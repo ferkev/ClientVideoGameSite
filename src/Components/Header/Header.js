@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import { Consumer } from '../../Context';
 
+
 export default class Header extends Component {
   render() {
+    
     return (
       <Consumer>
         {
@@ -14,11 +16,23 @@ export default class Header extends Component {
                 <form>
                   <input placeholder="Votre recherche..."/>
                 </form>
-                <a href="/login">Login</a>
-                <a href="/Register">Register</a>
-                <a href="/logout">
-                  <i className="material-icons">power_settings_new</i>
-                </a>
+                <React.Fragment>
+                  {
+                    !value.connected ? 
+                    (
+                      <React.Fragment>
+                        <a href="/login">Login</a>
+                        <a href="/Register">Register</a>
+                      </React.Fragment>
+                    )
+                    : 
+                    (
+                      <a href="/logout">
+                        <i className="material-icons">power_settings_new</i>
+                      </a>
+                    )
+                  }
+                </React.Fragment>
               </React.Fragment>
             )
           }

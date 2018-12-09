@@ -37,11 +37,11 @@ header form input{
   padding: 0.5rem;
 }
 
-::placeholder{
+header input::placeholder{
   color: rgba(223, 230, 233, 0.5);
 }
 
-input:focus{
+header input:focus{
   width: 90%;
   transition: 300ms;
 }

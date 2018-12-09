@@ -4,7 +4,9 @@ const Context = React.createContext();
 
 export class Provider extends Component {
 
-
+  state={
+    connected: false
+  }
   render() {
     return (
       <Context.Provider value={this.state}>

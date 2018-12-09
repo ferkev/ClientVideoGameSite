@@ -9,8 +9,8 @@ import './App.css';
 // Components
 import Header from './Components/Header/Header';
 import Index from './Components/Index/Index';
-
-
+import Login from './Components/Login/Login';
+import TestPage from './Components/TestPage/TestPage';
 // apollo client setup
 const client = new ApolloClient({
   uri:'http://localhost:4567/graphql'
@@ -27,6 +27,8 @@ class App extends Component {
                 <Header />
               </header>
               <Route exact path="/" component={Index} />
+              <Route path="/login" component={Login} />
+              <Route path="/testpage" component={TestPage} />
             </div>
           </Router>
         </ApolloProvider>
