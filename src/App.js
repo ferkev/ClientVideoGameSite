@@ -4,7 +4,7 @@ import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
 import { Provider } from './Context';
 // css
-import './App.css';
+import './App.scss';
 
 // Components
 import Header from './Components/Header/Header';

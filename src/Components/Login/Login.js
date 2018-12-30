@@ -14,12 +14,13 @@ class Login extends Component {
   state={
     identifying: "",
     password: "",
+    connectionError: false,
   }
 
 
-  submit = (event) => {
+  submit = (dispatch, event) => {
     event.preventDefault();
-    console.log(this.props)
+
     this.props.mutate({
       variables:{
         email: this.state.identifying,
@@ -27,7 +28,18 @@ class Login extends Component {
       }
       
     }).then((data) => {
-      console.log(data)
+
+      dispatch({
+        type: 'LOGIN',
+        payload: data
+      });
+    }).catch((error) => {
+      if(error){
+        console.log(error)
+        this.setState({
+          connectionError: true
+        })
+      }
     })
   }
 
@@ -39,6 +51,7 @@ class Login extends Component {
     })
   }
 
+  
 
 
   render() {
@@ -46,11 +59,11 @@ class Login extends Component {
       <Consumer>
         {
           value => {
-
+            let { dispatch } = value;
             return (
               <div>
                 <h1>Connection</h1>
-                <form onSubmit={this.submit}>
+                <form onSubmit={this.submit.bind(this, dispatch)}>
                   <div>
                     <label htmlFor="identifying">Id :</label>
                     <input id="identifying" name="identifying" type="text" placeholder="An id..." onChange={this.handleChange}/>

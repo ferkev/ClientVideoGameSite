@@ -1,0 +1,64 @@
+// /*** Header ***/
+
+$colors: (
+  primary: #4896EC,
+  primary-light: lighten(#4896EC, 10%),
+  hover: rgba( 0, 0, 0, 0.2 ),
+);
+
+@function color($color-name){
+  @return map-get($colors, $color-name)
+}
+
+header{
+  background-color: color(primary);
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  align-items: center;
+
+    a{
+      padding: 15px;
+      text-align: center;
+      font-size: 1rem;
+      color: #fff;
+      text-transform: capitalize;
+      border-bottom: 3px solid color(primary);
+    }
+
+    a:hover{
+        background-color: color(hover);
+        border-color: rgba(211, 176, 122, 1.0);
+    }
+
+    form{
+        grid-column: 3 / 4; 
+        text-align: right;
+        padding-right: 0.5em;
+
+        input{
+          width: 50%;
+          transition: 300ms;
+          font-size: 1rem;
+          border-radius: 5px;
+          background-color: color(primary-light);
+          color:#fff;
+          border: none;
+          padding: 0.5rem;
+        }
+
+        input::placeholder{
+          color: rgba(223, 230, 233, 0.5);
+        }
+      
+        input:focus{
+          width: 90%;
+          transition: 300ms;
+        }
+    }
+
+}
+
+// header 
+
+
